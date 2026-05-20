@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error | Transportify Voice{% endblock %}
+
+{% block content %}
+<section class="container dashboard-page">
+    <div class="dashboard-card text-center">
+        <h1>Server Error</h1>
+        <p class="text-secondary-light">Transportify Voice could not complete the request.</p>
+        <a class="btn btn-outline-cyan" href="{{ url_for('pages.home') }}">Back Home</a>
+    </div>
+</section>
+{% endblock %}

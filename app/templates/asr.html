@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}ASR Dashboard | Transportify Voice{% endblock %}
+
+{% block content %}
+<section class="container dashboard-page">
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">Automatic Speech Recognition</div>
+            <h1>ASR Dashboard</h1>
+        </div>
+        <span class="status-pill"><i class="bi bi-activity"></i> Live inference simulation</span>
+    </div>
+
+    <div id="asrAlert" class="alert app-alert d-none" role="alert"></div>
+
+    <div class="row g-4">
+        <div class="col-xl-5">
+            <section class="dashboard-card h-100">
+                <div class="card-title-row">
+                    <h2>Audio Input</h2>
+                    <span id="recordingState" class="micro-badge">Ready</span>
+                </div>
+
+                <div class="record-pad">
+                    <button id="recordButton" class="record-button" type="button" aria-label="Start recording">
+                        <i class="bi bi-mic-fill"></i>
+                    </button>
+                    <div class="record-meter" id="recordMeter">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div class="input-grid">
+                    <label class="upload-zone" for="audioUpload">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        <span>Upload WAV</span>
+                        <input id="audioUpload" type="file" accept=".wav,audio/wav,audio/x-wav" hidden>
+                    </label>
+                    <button id="analyzeButton" class="btn btn-cyan" type="button" disabled>
+                        <i class="bi bi-stars"></i>
+                        Analyze Audio
+                    </button>
+                </div>
+
+                <audio id="audioPreview" class="w-100 mt-4" controls></audio>
+
+                <div class="inference-strip mt-4">
+                    <span id="stepCapture">Capture</span>
+                    <span id="stepMfcc">MFCC</span>
+                    <span id="stepPredict">Predict</span>
+                    <span id="stepTts">Voice</span>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-xl-7">
+            <section class="dashboard-card result-card">
+                <div class="card-title-row">
+                    <h2>Prediction Result</h2>
+                    <span id="modelStatus" class="status-pill muted">Waiting</span>
+                </div>
+
+                <div class="prediction-display">
+                    <div>
+                        <span class="small-label">Recognized Word</span>
+                        <strong id="predictionLabel">-</strong>
+                    </div>
+                    <div class="confidence-ring">
+                        <span id="confidenceScore">0%</span>
+                    </div>
+                </div>
+
+                <div class="progress confidence-progress" role="progressbar" aria-label="Confidence">
+                    <div id="confidenceBar" class="progress-bar" style="width: 0%"></div>
+                </div>
+
+                <div id="probabilityList" class="probability-grid"></div>
+
+                <div class="voice-response mt-3">
+                    <span id="voiceResponseText">ASR response voice</span>
+                    <audio id="responseAudio" controls></audio>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-1">
+        <div class="col-lg-6">
+            <section class="dashboard-card visualization-card">
+                <div class="card-title-row">
+                    <h2>Waveform</h2>
+                    <i class="bi bi-soundwave"></i>
+                </div>
+                <img id="waveformImage" src="" alt="Waveform visualization">
+            </section>
+        </div>
+        <div class="col-lg-6">
+            <section class="dashboard-card visualization-card">
+                <div class="card-title-row">
+                    <h2>MFCC Heatmap</h2>
+                    <i class="bi bi-grid-3x3-gap"></i>
+                </div>
+                <img id="mfccImage" src="" alt="MFCC heatmap visualization">
+            </section>
+        </div>
+    </div>
+
+    <section class="dashboard-card mt-4">
+        <div class="card-title-row">
+            <h2>Prediction History</h2>
+            <button id="refreshHistory" class="btn btn-icon" type="button" aria-label="Refresh history">
+                <i class="bi bi-arrow-clockwise"></i>
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table class="table app-table align-middle">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Word</th>
+                        <th>Confidence</th>
+                        <th>Mode</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTable">
+                    <tr><td colspan="5" class="text-center text-secondary-light">No predictions yet</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/asr.js') }}?v=20260519-tts2"></script>
+{% endblock %}

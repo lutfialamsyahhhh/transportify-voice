@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}About | Transportify Voice{% endblock %}
+
+{% block content %}
+<section class="container dashboard-page">
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">Project Architecture</div>
+            <h1>About Transportify Voice</h1>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <section class="dashboard-card">
+                <h2>Educational AI/ML Focus</h2>
+                <p class="text-secondary-light">
+                    Transportify Voice demonstrates a manual speech recognition pipeline for a controlled Indonesian transportation vocabulary. It avoids pretrained ASR systems and external cloud recognition APIs so the core machine learning flow remains visible.
+                </p>
+                <div class="architecture-list">
+                    <span><i class="bi bi-record-circle"></i> 16 kHz WAV input</span>
+                    <span><i class="bi bi-sliders"></i> preprocessing and MFCC extraction</span>
+                    <span><i class="bi bi-diagram-3"></i> SVM classification</span>
+                    <span><i class="bi bi-bar-chart"></i> confidence probabilities</span>
+                    <span><i class="bi bi-volume-up"></i> Indonesian TTS response</span>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-5">
+            <section class="dashboard-card">
+                <h2>Dataset Target</h2>
+                <div class="metric-stack">
+                    <div><strong>10-20</strong><span>transport words</span></div>
+                    <div><strong>20</strong><span>recordings per word</span></div>
+                    <div><strong>200-400</strong><span>WAV files</span></div>
+                    <div><strong>1-2s</strong><span>duration per sample</span></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <section class="dashboard-card mt-4">
+        <h2>Module Map</h2>
+        <div class="module-grid">
+            <div><span>Routes</span><strong>pages and JSON APIs</strong></div>
+            <div><span>ASR</span><strong>audio, features, model, visualization</strong></div>
+            <div><span>TTS</span><strong>gTTS generation and speed handling</strong></div>
+            <div><span>Services</span><strong>uploads and prediction history</strong></div>
+        </div>
+    </section>
+</section>
+{% endblock %}

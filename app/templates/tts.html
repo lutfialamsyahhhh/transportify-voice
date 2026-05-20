@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}TTS Dashboard | Transportify Voice{% endblock %}
+
+{% block content %}
+<section class="container dashboard-page">
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">Text to Speech</div>
+            <h1>TTS Dashboard</h1>
+        </div>
+        <span class="status-pill"><i class="bi bi-translate"></i> Bahasa Indonesia</span>
+    </div>
+
+    <div id="ttsAlert" class="alert app-alert d-none" role="alert"></div>
+
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <section class="dashboard-card h-100">
+                <div class="card-title-row">
+                    <h2>Speech Generator</h2>
+                    <span class="micro-badge">Edge TTS</span>
+                </div>
+
+                <label class="form-label" for="ttsText">Input Text</label>
+                <textarea id="ttsText" class="form-control app-control tts-textarea" rows="8">Anda mengatakan kereta</textarea>
+
+                <div class="row g-3 mt-2">
+                    <div class="col-md-6">
+                        <label class="form-label" for="speedSelect">Speed</label>
+                        <select id="speedSelect" class="form-select app-control">
+                            <option value="normal" selected>Normal</option>
+                            <option value="slow">Slow</option>
+                            <option value="fast">Fast</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="voiceSelect">Voice</label>
+                        <select id="voiceSelect" class="form-select app-control">
+                            <option value="male" selected>Male Indonesian</option>
+                            <option value="female">Female Indonesian</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="generateTtsButton" class="btn btn-cyan btn-lg mt-4" type="button">
+                    <i class="bi bi-play-circle-fill"></i>
+                    Generate Speech
+                </button>
+            </section>
+        </div>
+
+        <div class="col-lg-5">
+            <section class="dashboard-card h-100">
+                <div class="card-title-row">
+                    <h2>Audio Output</h2>
+                    <span id="ttsState" class="status-pill muted">Idle</span>
+                </div>
+
+                <div class="speaker-panel">
+                    <i class="bi bi-volume-up-fill"></i>
+                    <span id="outputFileName">No audio generated</span>
+                </div>
+
+                <audio id="ttsAudio" class="w-100 mt-4" controls></audio>
+
+                <a id="downloadTtsButton" class="btn btn-outline-cyan w-100 mt-3 disabled" href="#" download>
+                    <i class="bi bi-download"></i>
+                    Download Audio
+                </a>
+
+                <div id="voiceNote" class="note-panel mt-4">
+                    Male uses id-ID-ArdiNeural. Female uses id-ID-GadisNeural.
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/tts.js') }}?v=20260519-tts2"></script>
+{% endblock %}

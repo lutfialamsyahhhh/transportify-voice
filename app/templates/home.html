@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Transportify Voice | Home{% endblock %}
+
+{% block content %}
+<section class="hero-band">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <div class="eyebrow">Indonesian Transportation AI Dashboard</div>
+                <h1 class="display-title">Transportify Voice</h1>
+                <p class="lead text-secondary-light">
+                    A focused speech recognition and text-to-speech system for Indonesian transportation vocabulary using MFCC feature extraction and classical machine learning.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a class="btn btn-cyan btn-lg" href="{{ url_for('pages.asr_dashboard') }}">
+                        <i class="bi bi-mic-fill"></i>
+                        Open ASR
+                    </a>
+                    <a class="btn btn-outline-cyan btn-lg" href="{{ url_for('pages.tts_dashboard') }}">
+                        <i class="bi bi-volume-up-fill"></i>
+                        Open TTS
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="signal-panel">
+                    <div class="panel-header">
+                        <span>Vocabulary Scope</span>
+                        <span class="status-pill">10 classes</span>
+                    </div>
+                    <div class="word-cloud">
+                        <span>mobil</span><span>motor</span><span>bus</span><span>kereta</span><span>kapal</span>
+                        <span>pesawat</span><span>sepeda</span><span>halte</span><span>terminal</span><span>bandara</span>
+                    </div>
+                    <div class="transport-lines" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container section-stack">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <article class="feature-card">
+                <i class="bi bi-cpu"></i>
+                <h2>Manual ASR Pipeline</h2>
+                <p>Preprocessing, MFCC extraction, feature normalization, label encoding, and SVM classification.</p>
+            </article>
+        </div>
+        <div class="col-md-4">
+            <article class="feature-card">
+                <i class="bi bi-graph-up-arrow"></i>
+                <h2>Visual Analysis</h2>
+                <p>Generated waveform and MFCC heatmap panels support presentation-ready ML explanations.</p>
+            </article>
+        </div>
+        <div class="col-md-4">
+            <article class="feature-card">
+                <i class="bi bi-broadcast"></i>
+                <h2>ASR to TTS</h2>
+                <p>Recognized words are transformed into Indonesian voice responses with gTTS synthesis.</p>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}
