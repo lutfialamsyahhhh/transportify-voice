@@ -796,12 +796,6 @@ Prediction (label) + Confidence (probability)
 
 ---
 
-## 📜 License
-
-[Insert your license here]
-
----
-
 ## 🤝 Contributing
 
 Kontribusi welcome! Silakan:
@@ -814,16 +808,6 @@ Kontribusi welcome! Silakan:
 
 ---
 
-## 📧 Support
-
-Untuk bantuan atau pertanyaan:
-
-- 📝 Open GitHub Issue
-- 📧 Email: [your-email@example.com]
-- 💬 Discord: [link]
-
----
-
 ## 🙏 Acknowledgments
 
 - [librosa](https://librosa.org/) - Audio analysis
@@ -833,6 +817,3 @@ Untuk bantuan atau pertanyaan:
 - [Edge TTS](https://github.com/rany2/edge-tts) - Text-to-Speech
 
 ---
-
-**Last Updated:** May 2024
-**Project Status:** Active Development 🚀
